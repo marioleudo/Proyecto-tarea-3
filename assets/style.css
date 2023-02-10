@@ -24,9 +24,13 @@ main {
   display: flex;
   flex-direction: row;
 }
-#nav2-index {
-  background-color: rgba(0, 0, 0, 0.866) !important;
+.textocheck {
+  color: white;
+}
+.divdeloscheck {
+  background-color: rgb(0, 0, 0) !important;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   padding: 30px;
 }
@@ -75,6 +79,10 @@ main {
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.card-img-top {
+  width: 300px;
+  height: 250px;
 }
 .card-body {
   display: flex;
