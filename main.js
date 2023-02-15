@@ -2,26 +2,24 @@ import {
   crearCheckbox,
   crearCartas,
   imprimirCartas,
+  filtrar,
 } from "./module/function.js";
-const eventData = data.events;
-const serchs = document.getElementById("serchs");
+const api = `https://mindhub-xj03.onrender.com/api/amazing`;
 const contenedor = document.getElementById("contenedor");
-const homeCarts = document.getElementById("homeCarts");
-serchs.addEventListener("keyup", filtrar);
-contenedor.addEventListener("change", filtrar);
-crearCheckbox(eventData, contenedor);
-imprimirCartas(eventData, homeCarts);
-crearCartas(data);
-// funcion para filtrar
-function filtrar(eventos) {
-  let checked = [
-    ...document.querySelectorAll('input[type="checkbox"]:checked'),
-  ].map((ele) => ele.value);
-  let filtrarPorCategory = eventData.filter(
-    (personaje) => checked.includes(personaje.category) || checked.length === 0
-  );
-  let filtrarPorSerchs = filtrarPorCategory.filter((personaje) =>
-    personaje.name.toLowerCase().includes(serchs.value.toLowerCase())
-  );
-  imprimirCartas(filtrarPorSerchs, homeCarts);
-}
+const homeCarts = document.getElementById("tarjetId");
+
+fetch(api)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    const eventData = data.events;
+    formHome.addEventListener("keyup", function () {
+      filtrar(eventData);
+    });
+    contenedor.addEventListener("change", function () {
+      filtrar(eventData);
+    });
+    crearCheckbox(eventData, contenedor);
+    imprimirCartas(eventData, homeCarts);
+    crearCartas(data);
+  });
