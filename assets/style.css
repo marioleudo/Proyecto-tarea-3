@@ -215,6 +215,20 @@ td {
   height: 300px;
 }
 @media (max-width: 320px) {
+  .description {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  #cartasindex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px !important;
+    height: 300px;
+  }
   .search-filt {
     min-width: 70%;
     display: flex;
@@ -270,6 +284,20 @@ td {
   }
 }
 @media (min-width: 321px) and (max-width: 426px) {
+  .description {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  #cartasindex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px !important;
+    height: 300px;
+  }
   .search-filt {
     min-width: 70%;
     display: flex;
