@@ -1,36 +1,30 @@
-let pastevents = data.events.filter(
+import {
+  crearCheckbox,
+  crearCartas,
+  imprimirCartas,
+} from "./module/function.js";
+const serchs = document.getElementById("serchs");
+const contenedor = document.getElementById("contenedor");
+const homeCarts = document.getElementById("homeCarts");
+const eventData = data.events.filter(
   (cardspasadas) => cardspasadas.date < data.currentDate
 );
+serchs.addEventListener("keyup", filtrar);
+contenedor.addEventListener("change", filtrar);
+crearCheckbox(eventData, contenedor);
+imprimirCartas(eventData, homeCarts);
+crearCartas(data);
 
-const eventosPasados = document.querySelector(".article-cards");
-for (let item of pastevents) {
-  eventosPasados.innerHTML += `
-  <div class="card" id="cardsid" style="width: 18rem;">
-  <img src=${item.image} class="card-img-top" alt="food">
-      <div class="card-body">
-          <h5 class="card-title">${item.name}</h5>
-          <div class="divcardsprice">
-            <p class="card-text">price: ${item.price}</p>
-            <a href="./details.html?id=${item._id}" class="btn btn-primary">details</a>
-          </div>
-      </div>
-  </div>`;
-}
-
-const categorias = data.events.map((events) => events.category);
-const categoriasSinRepetidas = new Set(categorias);
-const categoriasSinRepetidasArray = [...categoriasSinRepetidas];
-
-const contenedor = document.getElementById("contenedor");
-agregarInput(categoriasSinRepetidasArray);
-
-function agregarInput(lista) {
-  lista.forEach((elemento) => createLabel(elemento));
-}
-
-function createLabel(item) {
-  const label = document.createElement("label");
-  label.innerHTML = `
-  <input type="checkbox" value="${item}"/><span class="textocheck">${item}</span>`;
-  contenedor.appendChild(label);
+// funcion para filtrar
+function filtrar(eventos) {
+  let checked = [
+    ...document.querySelectorAll('input[type="checkbox"]:checked'),
+  ].map((ele) => ele.value);
+  let filtrarPorCategory = eventData.filter(
+    (personaje) => checked.includes(personaje.category) || checked.length === 0
+  );
+  let filtrarPorSerchs = filtrarPorCategory.filter((personaje) =>
+    personaje.name.toLowerCase().includes(serchs.value.toLowerCase())
+  );
+  imprimirCartas(filtrarPorSerchs, homeCarts);
 }

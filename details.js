@@ -4,7 +4,6 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
 const cardD = eventosD.find((cards) => cards._id === id);
-
 const verTarjeta = document.querySelector(".article-cards");
 verTarjeta.innerHTML = `
 <div class="card" id="cardsid" style="width: 18rem;">

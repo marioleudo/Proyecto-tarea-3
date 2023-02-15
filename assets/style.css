@@ -73,7 +73,7 @@ main {
   font-weight: 700;
   font-size: 100px;
 }
-.article-cards {
+#homeCarts {
   background-color: rgba(187, 0, 255, 0.467);
   display: flex;
   justify-content: space-around;
@@ -85,14 +85,18 @@ main {
   height: 250px;
 }
 .card-body {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: row !important;
   justify-content: space-between !important;
 }
-#cardsid {
-  margin: 10px;
-  background-color: rgba(165, 42, 42, 0.618);
-  padding: 10px;
+#prices {
+  height: 40px;
+}
+.card {
+  width: 300px !important;
+  margin: 10px !important;
+  background-color: rgba(165, 42, 42, 0.618) !important;
+  padding: 10px !important;
 }
 .card-title,
 .card-text {
